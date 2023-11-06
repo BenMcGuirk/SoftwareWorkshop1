@@ -134,6 +134,8 @@ def create_unique(id_list):
     for id in final_list:
         f.write(id + "\n")
 
+    print(final_list)
+    print(email_list)
     f.close()
     sf.close()
     return final_list
@@ -213,11 +215,20 @@ def ids_addrs(short_addr):
     This function reads in the unique_ids.txt file as f and creates a dictionary based on the id and the short address
     :param short_addr: passed in from main() - generated from create_short_address()
     :return: combo is the key / value pair, i.e. unique id and the short addr for each student
+
+    call function 2, 4 and 5 before this function
     """
-    f = ""
+    f = open("unique_ids.txt", "r")
     ids = f.read()
     combo = {}
+    print(ids)
     # insert code here to create combo
+    ids = ids.split("\n")
+    for x in range(len(ids)):
+        combo[ids[x]] = short_addr[x]
+
+    #print(combo)
+    f.close()
     return combo
 
 
