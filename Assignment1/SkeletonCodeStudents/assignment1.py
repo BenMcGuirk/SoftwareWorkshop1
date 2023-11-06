@@ -145,10 +145,19 @@ def create_short_address():
     split the address up so that only the first part and the postcode make up the shorter address
     :return: split_addrs is returned where the address1, postcode make up the list - this list is used for validate_pcode()
     """
-    f = " "
+    f = open("addresses.txt", "r")
     text = f.read()
     split_addrs = []
     # insert code here to create the shorter address
+    split_by_line = text.split("\n")
+    split_by_comma = []
+    for line in split_by_line:
+        split_by_comma.append(line.split(","))
+
+    for x in split_by_comma:
+        split_addrs.append(x[0] + "," + x[-1])
+
+    f.close()
     return split_addrs
 
 
@@ -158,8 +167,44 @@ def validate_pcode(split_addrs):
     :param split_addrs: this is passed from main(), obtained from the function create_short_address()
     :return: validate_pcode is a list that contains True False values for each postcode that is validated - see question 6
     """
+    """
+    Postcode validation:
+    - must be 6 characters long
+    - first character must be an uppercase letter
+    - second third and fourth characters must be digits
+    - fifth and sixth characters must be uppercase letters
+    (assign each pcode with a unique number at the start)
+    """
     validate_pcode = []
     # insert code here to validate each character of the postcode
+    count = 0
+    for addrs in split_addrs:
+        isolatePcode = addrs.split(", ")
+        validate_pcode.append(count)
+        pcode = isolatePcode[1]
+        if len(pcode) != 6:
+            validate_pcode.append('False')
+            pcode += '$$$$$$'
+        else:
+            validate_pcode.append('True')
+
+        if not 'A' <= pcode[0] <= 'Z':
+            validate_pcode.append('False')
+        else:
+            validate_pcode.append('True')
+
+        if not '0' <= pcode[1] <= '9' or not '0' <= pcode[2] <= '9' or not '0' <= pcode[3] <= '9':
+            validate_pcode.append('False')
+        else:
+            validate_pcode.append('True')
+
+        if not 'A' <= pcode[4] <= 'Z' or not 'A' <= pcode[5] <= 'Z':
+            validate_pcode.append('False')
+        else:
+            validate_pcode.append('True')
+
+        count += 1
+
     return validate_pcode
 
 
@@ -213,4 +258,3 @@ if __name__ == "__main__":
 
 
 
-    
