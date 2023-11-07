@@ -109,6 +109,8 @@ def create_unique(id_list):
     Unique ID's are created as follows:
     - includes short id from Q2, with 0000 appended to the end (e.g. jxw0000).
     - if there is already a student with the same short id, then the number is incremented by 1 (e.g. jxw0001).
+
+    call function 2 before this function
     """
     f = open("unique_ids.txt", "w")
     sf = open("create_emails.txt", "w")
@@ -123,7 +125,20 @@ def create_unique(id_list):
         else:
             database[id] += 1
             final_list.append(f"{id}{database[id]:04d}")
+    
+    # reorder ids by 4-digit number size (mas0001 and mas0002 moved to the end)
 
+    ids_with_0 = []
+    ids_without_0 = []   
+
+    for id in final_list:
+        if id[-1] == "0":
+            ids_with_0.append(id)
+        else:
+            ids_without_0.append(id) 
+
+    final_list = ids_with_0 + ids_without_0
+    
     for id in final_list:
         email_list.append(id + "@student.bham.ac.uk")
 
@@ -222,19 +237,7 @@ def ids_addrs(short_addr):
     """
     f = open("unique_ids.txt", "r")
     ids = f.read()
-    # reorder ids by 4-digit number size (mas0001 and mas0002 moved to the end)
     ids = ids.split("\n")
-    ids_with_0 = []
-    ids_without_0 = []   
-
-    for id in ids:
-        if id[-1] == "0":
-            ids_with_0.append(id)
-        else:
-            ids_without_0.append(id) 
-
-    ids = ids_with_0 + ids_without_0
-
     combo = {}
     # insert code here to create combo
     for x in range(len(ids)):
