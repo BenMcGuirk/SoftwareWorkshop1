@@ -132,10 +132,11 @@ def create_unique(id_list):
         sf.write(id + "\n")
     
     for id in final_list:
-        f.write(id + "\n")
+        if id not in final_list[-1]:
+            f.write(id + "\n")
+        else:
+            f.write(id) # this is to prevent a new line being added to the end of the file causing an error in function 7
 
-    print(final_list)
-    print(email_list)
     f.close()
     sf.close()
     return final_list
@@ -220,16 +221,27 @@ def ids_addrs(short_addr):
     """
     f = open("unique_ids.txt", "r")
     ids = f.read()
-    combo = {}
-    print(ids)
-    # insert code here to create combo
+    # reorder ids by 4-digit number size (mas0001 and mas0002 moved to the end)
     ids = ids.split("\n")
-    for x in range(len(ids)):
-        combo[ids[x]] = short_addr[x]
+    ids_with_0 = []
+    ids_without_0 = []   
 
-    #print(combo)
+    for id in ids:
+        if id[-1] == "0":
+            ids_with_0.append(id)
+        else:
+            ids_without_0.append(id) 
+
+    ids = ids_with_0 + ids_without_0
+
+    combo = {}
+    # insert code here to create combo
+    for x in range(len(ids)):
+        combo[ids[x]] = [short_addr[x]]
+
     f.close()
     return combo
+    
 
 
 def main():
