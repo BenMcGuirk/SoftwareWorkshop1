@@ -45,7 +45,6 @@ def build_id():
         elif len(line) == 2:
             id_list.append(line[0][0] + "x" + line[1][0])
     f.close()
-    print(id_list)
     return id_list
 
 
@@ -177,6 +176,8 @@ def validate_pcode(split_addrs):
     - second third and fourth characters must be digits
     - fifth and sixth characters must be uppercase letters
     (assign each pcode with a unique number at the start)
+
+    call function 5 before this function
     """
     validate_pcode = []
     # insert code here to validate each character of the postcode
@@ -187,7 +188,7 @@ def validate_pcode(split_addrs):
         pcode = isolatePcode[1]
         if len(pcode) != 6:
             validate_pcode.append('False')
-            pcode += '$$$$$$'
+            pcode = '$$$$$$'
         else:
             validate_pcode.append('True')
 
