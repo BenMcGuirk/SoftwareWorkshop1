@@ -245,10 +245,12 @@ def ids_addrs(short_addr):
     ids = ids.split("\n")
     combo = {}
     
+    """
     test_format_ids = [] # this is change format of ids to match test case e.g. 'mass000' to " 'mas0000'"
     for x in ids:
         test_format_ids.append(" '" + x + "'")
     ids = test_format_ids
+    """
 
     # insert code here to create combo
     for x in range(len(ids)):
