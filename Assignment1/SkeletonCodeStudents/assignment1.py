@@ -17,7 +17,7 @@ def clean_up():
     for char in text:
         if 'a' <= char <= 'z' or 'A' <= char <= 'Z' or char == " " or char == "." or char == "\n":
             cleaned += char
-    cleaned += "\n" # this is to add a final new line after 'Jenny Squi' to prevent an test failure
+    cleaned += "\n" # this is to add a final new line after 'Jenny Squi' (or whatever last name used in text_to_clean.txt) to prevent a test failure
 
     sf.write(cleaned)
     f.close()
@@ -87,7 +87,7 @@ def validate_password(password):
     if not any('a' <= char <= 'z' for char in password):
         illegal_password.append("NOT MIXED CASE")
 
-    if not all(('A' <= char <= 'Z' or 'a' <= char <= 'z' or char == '_' or '0' <= char <= '9') for char in password):
+    if not all(('A' <= char <= 'Z' or 'a' <= char <= 'z' or char == '_' or char.isdigit()) for char in password):
         illegal_password.append("WRONG CHARACTERS")
 
     if password[0].isdigit():
@@ -220,7 +220,7 @@ def validate_pcode(split_addrs):
         else:
             validate_pcode.append('True')
 
-        if not '0' <= pcode[1] <= '9' or not '0' <= pcode[2] <= '9' or not '0' <= pcode[3] <= '9':
+        if not pcode[1].isdigit() or not pcode[2].isdigit() or not pcode[3].isdigit():
             validate_pcode.append('False')
         else:
             validate_pcode.append('True')
@@ -247,18 +247,11 @@ def ids_addrs(short_addr):
     ids = f.read()
     ids = ids.split("\n")
     combo = {}
-    """
-    test_format_ids = [] # this is change format of ids to match test case e.g. 'mass000' to " 'mas0000'"
-    for x in ids:
-        test_format_ids.append(" '" + x + "'")
-    ids = test_format_ids
-    """
 
     # insert code here to create combo
     for x in range(len(ids)):
         combo[ids[x]] = short_addr[x]
 
-    print(combo)
     f.close()
     return combo
     
