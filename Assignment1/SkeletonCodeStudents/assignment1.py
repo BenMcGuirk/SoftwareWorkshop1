@@ -17,7 +17,7 @@ def clean_up():
     for char in text:
         if 'a' <= char <= 'z' or 'A' <= char <= 'Z' or char == " " or char == "." or char == "\n":
             cleaned += char
-    cleaned += "\n" # this is to add a final new line after 'Anya Gonzalez' to prevent an test failure
+    cleaned += "\n" # this is to add a final new line after 'Jenny Squi' to prevent an test failure
 
     sf.write(cleaned)
     f.close()
@@ -45,6 +45,9 @@ def build_id():
             id_list.append(line[0][0] + line[1][0] + line[2][0])
         elif len(line) == 2:
             id_list.append(line[0][0] + "x" + line[1][0])
+        else:
+            return "ERROR: Name has less than two words"
+        
     f.close()
     return id_list
 
@@ -244,7 +247,6 @@ def ids_addrs(short_addr):
     ids = f.read()
     ids = ids.split("\n")
     combo = {}
-    
     """
     test_format_ids = [] # this is change format of ids to match test case e.g. 'mass000' to " 'mas0000'"
     for x in ids:
@@ -259,7 +261,6 @@ def ids_addrs(short_addr):
     # test case has an extra empty key value pair at the end of the dictionary, this next line of code is to update my dictionary to match (so that the test case passes)
     #combo[''] = ''
 
-    print(combo)
     f.close()
     return combo
     
