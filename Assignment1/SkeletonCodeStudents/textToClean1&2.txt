@@ -1,4 +1,4 @@
-text to clean 1:
+text to clean (test 2):
 
 Michael &Adam Smith
 Amy Jones£!
@@ -10,7 +10,7 @@ Anya Gon^^%(zalez
 Jo[n Ste$war(t
 Je@^nny S+qui
 
-text to clean 2:
+text to clean (test 1):
 
 Michael &Adam Smith
 Amy Jones£!

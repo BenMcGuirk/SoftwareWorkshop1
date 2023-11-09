@@ -70,12 +70,12 @@ class TestClass:
     ['122 Abex road', 'A432JH'], ['55 Kings street', 'M432JK'], ['2 Canal street', 'M222KL'],
     ['234 Bold street', 'L128JK'], \
     ['5 Abbey road', '1P63JA']]
-        assert assignment1.ids_addrs(short_addr) == {'mas0000': ['2 Smith street', 'B312AB'],
-                                                     'axj0000': ['25 Eddie drive', 'C912WW'], \
-                                                    'drs0000': ['1 Short street', 'C112GH'],
-                                                    'axt0000': ['5 Long street', 'L236QA'], \
-                                                    'jxs0000': ['122 Abex road', 'A432JH'],
-                                                    'hxc0000': ['55 Kings street', 'M432JK'], \
-                                                    'axg0000': ['2 Canal street', 'M222KL'],
-                                                    'mas0001': ['234 Bold street', 'L128JK'], \
-                                                    'mas0002': ['5 Abbey road', '1P63JA'], }
+        assert assignment1.ids_addrs(short_addr) == {"mas0000": ['2 Smith street', 'B312AB'],
+                                                     "axj0000": ['25 Eddie drive', 'C912WW'], \
+                                                    "drs0000": ['1 Short street', 'C112GH'],
+                                                    "axt0000": ['5 Long street', 'L236QA'], \
+                                                    "jxs0000": ['122 Abex road', 'A432JH'],
+                                                    "hxc0000": ['55 Kings street', 'M432JK'], \
+                                                    "axg0000": ['2 Canal street', 'M222KL'],
+                                                    "mas0001": ['234 Bold street', 'L128JK'], \
+                                                    "mas0002": ['5 Abbey road', '1P63JA'], }
