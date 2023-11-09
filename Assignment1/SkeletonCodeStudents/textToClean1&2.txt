@@ -1,0 +1,23 @@
+text to clean 1:
+
+Michael &Adam Smith
+Amy Jones£!
+Mary Ann ^Smith
+Mark Ant Sweepy
+Jarryd Steph:"enson
+Hannah Chet!@_+ty
+Anya Gon^^%(zalez
+Jo[n Ste$war(t
+Je@^nny S+qui
+
+text to clean 2:
+
+Michael &Adam Smith
+Amy Jones£!
+David Ro*^bert Simmons
+Andy Turing
+Mary Ann ^Smith
+Mark Ant Sweepy
+Jarryd Steph:"enson
+Hannah Chet!@_+ty
+Anya Gon^^%(zalez

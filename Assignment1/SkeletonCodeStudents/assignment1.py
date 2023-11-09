@@ -155,6 +155,7 @@ def create_unique(id_list):
         else:
             f.write(id) # this is to prevent a new line being added to the end of the file causing an error in function 7
 
+    print(final_list)
     f.close()
     sf.close()
     return final_list
@@ -261,6 +262,7 @@ def ids_addrs(short_addr):
     # test case has an extra empty key value pair at the end of the dictionary, this next line of code is to update my dictionary to match (so that the test case passes)
     #combo[''] = ''
 
+    print(combo)
     f.close()
     return combo
     
