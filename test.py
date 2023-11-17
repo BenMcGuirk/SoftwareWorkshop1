@@ -1,1 +1,3 @@
-print("Hello" * 5)
+text = "222"
+num = int(text)
+print(num)
