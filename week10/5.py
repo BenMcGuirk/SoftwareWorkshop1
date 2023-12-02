@@ -27,18 +27,18 @@ class Character:
 class Enemy(Character):
     def __init__(self, x, y, img_file, speed, life_counter, message):
         Character.__init__(self, x, y, img_file, speed, life_counter)
-        self.message = "I'm here to protect my master"
+        self.message = message
 
 class Player(Character):
     def __init__(self, x, y, img_file, speed, life_counter):
-        Character.__init__(self, y, img_file, speed, life_counter)
+        Character.__init__(self, x, y, img_file, speed, life_counter)
         self.speed = 56
 
 class DifficultEnemy(Enemy):
-      def __init__(self, x, y, img_file):
-          Enemy.__init__(self, img_file, 80)
+      def __init__(self, x, y, img_file, speed, life_counter, message):
+          Enemy.__init__(self, x, y, img_file, speed, life_counter, message)
 
 class EasyEnemy(Enemy):
-    def __init__(self, x, y, img_file, 40):
-        Enemy.__init__(self, x, y, img_file)
+    def __init__(self, x, y, img_file, speed, life_counter, message):
+        Enemy.__init__(self, x, y, img_file, speed, life_counter, message)
         self.life_counter = 1
